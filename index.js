@@ -153,6 +153,7 @@ function returnPhotosInfo(photos, sid) {
             ...rest,
             resolution: additional.resolution,
             thumbBig: getThumbnailUrl(ip, sid, photo),
+            thumbBigExternal: getThumbnailUrl(ip, sid, photo).replace(domainInternal, domainExternal),
             thumbMed: getThumbnailUrl(ip, sid, photo).replace('&size=xl', '&size=m'),
             thumbSmall: getThumbnailUrl(ip, sid, photo).replace('&size=xl', '&size=sm'),
             thumbSmallExternal: getThumbnailUrl(ip, sid, photo).replace('&size=xl', '&size=sm').replace(domainInternal, domainExternal),
@@ -264,7 +265,7 @@ main().catch(console.error)
 let schedule
 switch (sendBy) {
     case 'day':
-        schedule = '0 8 * * *' // Every day at 8am
+        schedule = '0 7 * * *' // Every day at 8am
         break
     case 'week':
         schedule = '0 8 * * 1' // Every Monday at 8am
